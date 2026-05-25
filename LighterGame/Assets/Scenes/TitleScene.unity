@@ -1281,7 +1281,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TITLE_SCENE: TitleScene
   MENU_SCENE: MenuScene
-  STAGE_SELECT_SCENE: 
+  STAGE_SELECT_SCENE: StageSelectScene
+  MAIN_STAGE_SCENE_1: StageScene1
 --- !u!4 &2056774605
 Transform:
   m_ObjectHideFlags: 0
@@ -1290,7 +1291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056774603}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 894.6004, y: 576.82324, z: -1.4058001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

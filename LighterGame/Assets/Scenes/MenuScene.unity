@@ -655,7 +655,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 346348252}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: OnClickMenuButton
+        m_MethodName: OnClickTitleButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

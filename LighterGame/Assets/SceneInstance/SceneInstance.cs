@@ -8,16 +8,16 @@ using UnityEngine.SceneManagement;
 public class SceneInstance : SingletonMonoBehaviour<SceneInstance>
 {
     [Header("タイトルシーンを設定")]
-    [SerializeField] private static readonly string TITLE_SCENE = "TitleScene";
+    [SerializeField] private string TITLE_SCENE = "TitleScene";
 
     [Header("メニューシーンを設定")]
-    [SerializeField] private static readonly string MENU_SCENE = "MenuScene";
+    [SerializeField] private string MENU_SCENE = "MenuScene";
 
     [Header("ステージ選択シーンを設定")]
-    [SerializeField] private static readonly string STAGE_SELECT_SCENE = "StageSelectScene";
+    [SerializeField] private string STAGE_SELECT_SCENE = "StageSelectScene";
 
     [Header("ゲームシーンを設定")]
-    [SerializeField] private static readonly string MAIN_STAGE_SCENE_1 = "StageScene1";
+    [SerializeField] private string MAIN_STAGE_SCENE_1 = "StageScene1";
 
     /// <summary>
     /// タイトルシーンをロードする
