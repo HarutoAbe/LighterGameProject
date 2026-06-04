@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AllGameManager : MonoBehaviour
+public class AllGameManager : SingletonMonoBehaviour<AllGameManager>
 {
     public enum GameState
     {

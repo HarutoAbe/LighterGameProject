@@ -19,10 +19,6 @@ public class PlayerMouseController : MonoBehaviour
     [Header("発火時間")]
     [SerializeField] private float fireDuration = 3f;
 
-    [Header("ライターのデータ")]
-    [SerializeField] private LighterData lighterData = null;
-
-
     public Vector2 mousePosition = default;
     private Mouse mouse = null;
 
