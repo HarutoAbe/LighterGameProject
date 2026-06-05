@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMouseController : MonoBehaviour
 {
@@ -18,15 +19,21 @@ public class PlayerMouseController : MonoBehaviour
     [Header("発火時間")]
     [SerializeField] private float fireDuration = 3f;
 
+    public Vector2 mousePosition = default;
+    private Mouse mouse = null;
+
     private float timer = 0f;
     private int scrollCount = 0;
 
     private bool isFired = false;
     private float fireTimer = 0f;
 
+
     void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
+
+        mousePosition = Input.mousePosition;
 
         // スクロール検出
         if (Mathf.Abs(scroll) > deadZone)
