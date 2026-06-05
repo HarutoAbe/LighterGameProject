@@ -16,4 +16,5 @@ MonoBehaviour:
   - cursorType: 1
     cursorTexture: {fileID: 2800000, guid: 5090b12f9d43ee747b631f030a4d11f6, type: 3}
     cursorHotspot: {x: 0, y: 0.52}
-  fireImage: []
+  fireImage:
+  - {fileID: 0}

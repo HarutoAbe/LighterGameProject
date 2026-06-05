@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UICursor : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class UICursor : MonoBehaviour
     private void Start()
     {
         VisibleCursor(AllGameManager.GameState.InGame);
+
+        
     }
 
     private void Update()
