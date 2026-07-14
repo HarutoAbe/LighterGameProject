@@ -14,69 +14,86 @@ public class PlayerMouseController : MonoBehaviour
 
     [Header("発火条件（回数）")]
     [SerializeField] private int minCount = 2;
+
     [SerializeField] private int maxCount = 5;
 
     [Header("発火時間")]
     [SerializeField] private float fireDuration = 3f;
 
+    // マウスの位置
     public Vector2 mousePosition = default;
-    private Mouse mouse = null;
 
     private float timer = 0f;
     private int scrollCount = 0;
-
-    private bool isFired = false;
     private float fireTimer = 0f;
 
+    // 前フレームでスクロールしていたか
+    private bool wasScrolling = false;
 
-    void Update()
+    private void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
 
         mousePosition = Input.mousePosition;
 
-        // スクロール検出
-        if (Mathf.Abs(scroll) > deadZone)
+        bool isScrolling = Mathf.Abs(scroll) > deadZone;
+
+        // スクロール開始時だけカウント
+        if (isScrolling && !wasScrolling)
         {
             scrollCount++;
-            timer = 0f; // 入力あったらリセット
+            timer = 0f;
+
+            Debug.Log($"スクロール回数 : {scrollCount}");
         }
 
-        // 時間経過
-        timer += Time.deltaTime;
+        wasScrolling = isScrolling;
 
-        // 一定時間でリセット
-        if (timer > windowTime)
+        // 入力が止まっている間だけ時間を進める
+        if (!isScrolling)
         {
-            scrollCount = 0;
+            timer += Time.deltaTime;
         }
 
-        Debug.Log($"Count: {scrollCount}");
-
-        //  発火中
-        if (isFired)
+        // 発火中
+        if (FireManager.Instance.isFire)
         {
             fireTimer += Time.deltaTime;
 
             if (fireTimer >= fireDuration)
             {
-                isFired = false;
+                FireManager.Instance.isFire = false;
                 fireTimer = 0f;
             }
+
             return;
         }
 
-        // 発火判定
-        if (scrollCount >= minCount && scrollCount <= maxCount)
+        // 一定時間スクロールが止まったら判定
+        if (timer >= windowTime && scrollCount > 0)
         {
-            OnFire();
+            if (scrollCount >= minCount && scrollCount <= maxCount)
+            {
+                Debug.Log("成功！");
+                OnFire();
+            }
+            else
+            {
+                Debug.Log($"失敗 ({scrollCount}回)");
+            }
+
+            // リセット
             scrollCount = 0;
+            timer = 0f;
         }
     }
 
-    void OnFire()
+    /// <summary>
+    /// 発火判定した時の処理
+    /// </summary>
+    public void OnFire()
     {
-        Debug.Log("発火！");
-        isFired = true;
+        Debug.Log("🔥 発火！");
+        FireManager.Instance.isFire = true;
     }
 }

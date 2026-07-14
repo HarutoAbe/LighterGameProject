@@ -8,4 +8,11 @@ public class InGameManager : MonoBehaviour
         // リザルト画面に移った時にカーソルを元に戻す
         CursorManager.Instance.SetCursor(CursorEntry.CursorType.INGAME);
     }
+
+    private void Update()
+    {
+
+        // ゲームの状態をリザルト画面に変更する
+        AllGameManager.GameState gameState = AllGameManager.GameState.Result;
+    }
 }

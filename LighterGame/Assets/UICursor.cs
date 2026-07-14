@@ -10,14 +10,12 @@ public class UICursor : MonoBehaviour
     {
         VisibleCursor(AllGameManager.GameState.InGame);
 
-        
+
     }
 
     private void Update()
-
     {
         transform.position = (Vector2)Input.mousePosition + offset;
-        
     }
 
     public void VisibleCursor(AllGameManager.GameState gameState)
